@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COMPUTER ENGINEERING - IUG</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="themes.css">
+  <link rel="stylesheet" href="theme-synced.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  
+  <!-- Animated Background Particles -->
+  <div class="particles-bg">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Modern Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <i class="fas fa-graduation-cap"></i>
+        <span>IUG Computer Engineering</span>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-actions">
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="theme-btn" onclick="toggleThemeMenu()">
+          <i class="fas fa-palette"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Theme Selector -->
+  <div class="theme-menu" id="themeMenu">
+    <div class="theme-menu-header">
+      <h3>اختر اللون المفضل</h3>
+      <button onclick="toggleThemeMenu()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="theme-colors">
+      <span class="color blue" onclick="applyTheme('theme-blue')" title="أزرق"></span>
+      <span class="color green" onclick="applyTheme('theme-green')" title="أخضر"></span>
+      <span class="color purple" onclick="applyTheme('theme-purple')" title="بنفسجي"></span>
+      <span class="color orange" onclick="applyTheme('theme-orange')" title="برتقالي"></span>
+      <span class="color red" onclick="applyTheme('theme-red')" title="أحمر"></span>
+      <span class="color pink" onclick="applyTheme('theme-pink')" title="وردي"></span>
+      <span class="color yellow" onclick="applyTheme('theme-yellow')" title="أصفر"></span>
+      <span class="color cyan" onclick="applyTheme('theme-cyan')" title="سماوي"></span>
+      <span class="color lime" onclick="applyTheme('theme-lime')" title="ليموني"></span>
+      <span class="color teal" onclick="applyTheme('theme-teal')" title="تركواز"></span>
+      <span class="color magenta" onclick="applyTheme('theme-magenta')" title="ماجنتا"></span>
+      <span class="color maroon" onclick="applyTheme('theme-maroon')" title="عنابي"></span>
+      <span class="color navy" onclick="applyTheme('theme-navy')" title="كحلي"></span>
+      <span class="color gray" onclick="applyTheme('theme-gray')" title="رمادي"></span>
+      <span class="color black" onclick="applyTheme('theme-black')" title="أسود"></span>
+      <span class="color off" onclick="applyTheme('')" title="إلغاء">
+        <i class="fas fa-undo"></i>
+      </span>
+    </div>
+  </div>
+
+  <!-- Sidebar Menu -->
+  <div class="sidebar" id="menuList">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-book-open"></i> القائمة</h2>
+      <button class="close-sidebar" onclick="toggleMenu()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <ul class="sidebar-nav">
+      <li class="active">
+        <a href="index.html">
+          <i class="fas fa-home"></i>
+          <span>الصفحة الرئيسية</span>
+        </a>
+      </li>
+      <li>
+        <a href="firstYear.html">
+          <i class="fas fa-book"></i>
+          <span>السنة الأولى</span>
+        </a>
+      </li>
+      <li>
+        <a href="secndYear.html">
+          <i class="fas fa-book"></i>
+          <span>السنة الثانية</span>
+        </a>
+      </li>
+      <li>
+        <a href="thirdYear.html">
+          <i class="fas fa-book"></i>
+          <span>السنة الثالثة</span>
+        </a>
+      </li>
+      <li>
+        <a href="fourthYear.html">
+          <i class="fas fa-book"></i>
+          <span>السنة الرابعة</span>
+        </a>
+      </li>
+      <li>
+        <a href="fifthYear.html">
+          <i class="fas fa-book"></i>
+          <span>السنة الخامسة</span>
+        </a>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <a href="https://t.me/IUGComENG2004" target="_blank" class="telegram-link">
+        <i class="fab fa-telegram"></i>
+        <span>انضم لقناتنا</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Advanced Search -->
+  <div class="search-container">
+    <div class="search-wrapper">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="searchInput" placeholder="ابحث عن أي مادة..." onkeyup="searchSubject()">
+      <button class="search-clear" onclick="clearSearch()" style="display: none;">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge" data-aos="fade-down">
+        <i class="fas fa-star"></i>
+        <span>منصة تعليمية متكاملة</span>
+      </div>
+      
+      <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+        <span class="gradient-text">هندسة الحاسوب</span>
+        <br>
+        <span class="university-name">الجامعة الإسلامية - غزة</span>
+      </h1>
+      
+      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+        جميع المواد الدراسية والمحاضرات والملازم في مكان واحد
+        <br>
+        <span class="highlight">منظمة • شاملة • محدثة باستمرار</span>
+      </p>
+
+      <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+        <div class="stat-item">
+          <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+          <div class="stat-content">
+            <span class="stat-number">100+</span>
+            <span class="stat-label">مادة دراسية</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon"><i class="fas fa-file-pdf"></i></div>
+          <div class="stat-content">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">ملف PDF</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <div class="stat-content">
+            <span class="stat-number">1000+</span>
+            <span class="stat-label">طالب</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
+        <a href="#years" class="btn btn-primary">
+          <span>تصفح المواد</span>
+          <i class="fas fa-arrow-down"></i>
+        </a>
+        <a href="https://t.me/IUGComENG2004" target="_blank" class="btn btn-secondary">
+          <i class="fab fa-telegram"></i>
+          <span>انضم للمجموعة</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" data-aos="fade" data-aos-delay="600">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <span>مرر للأسفل</span>
+    </div>
+  </section>
+
+  <!-- Years Section -->
+  <section class="years-section" id="years">
+    <div class="section-header" data-aos="fade-up">
+      <h2 class="section-title">
+        <span class="title-icon"><i class="fas fa-graduation-cap"></i></span>
+        اختر السنة الدراسية
+      </h2>
+      <p class="section-subtitle">
+        جميع المواد منظمة حسب السنة الدراسية لسهولة الوصول
+      </p>
+    </div>
+
+    <div class="years-grid">
+      <div class="year-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="year-card-header">
+          <div class="year-icon">
+            <i class="fas fa-book"></i>
+            <span class="year-number">1</span>
+          </div>
+          <div class="year-badge">📘</div>
+        </div>
+        <div class="year-card-body">
+          <h3 class="year-title">السنة الأولى</h3>
+          <p class="year-description">أساسيات البرمجة، الرياضيات، الفيزياء</p>
+          <ul class="year-features">
+            <li><i class="fas fa-check"></i> Introduction to Computers</li>
+            <li><i class="fas fa-check"></i> Computer Programming 1</li>
+            <li><i class="fas fa-check"></i> Calculus A & B</li>
+          </ul>
+        </div>
+        <div class="year-card-footer">
+          <a href="firstYear.html" class="year-link">
+            <span>استكشاف المواد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="year-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="year-card-header">
+          <div class="year-icon">
+            <i class="fas fa-laptop-code"></i>
+            <span class="year-number">2</span>
+          </div>
+          <div class="year-badge">📙</div>
+        </div>
+        <div class="year-card-body">
+          <h3 class="year-title">السنة الثانية</h3>
+          <p class="year-description">البرمجة المتقدمة، هياكل البيانات</p>
+          <ul class="year-features">
+            <li><i class="fas fa-check"></i> Data Structures</li>
+            <li><i class="fas fa-check"></i> Digital Design</li>
+            <li><i class="fas fa-check"></i> Discrete Mathematics</li>
+          </ul>
+        </div>
+        <div class="year-card-footer">
+          <a href="secndYear.html" class="year-link">
+            <span>استكشاف المواد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="year-card featured" data-aos="fade-up" data-aos-delay="300">
+        <div class="featured-badge">
+          <i class="fas fa-star"></i>
+          <span>الأكثر شعبية</span>
+        </div>
+        <div class="year-card-header">
+          <div class="year-icon">
+            <i class="fas fa-microchip"></i>
+            <span class="year-number">3</span>
+          </div>
+          <div class="year-badge">📕</div>
+        </div>
+        <div class="year-card-body">
+          <h3 class="year-title">السنة الثالثة</h3>
+          <p class="year-description">معمارية الحاسوب، نظم التشغيل</p>
+          <ul class="year-features">
+            <li><i class="fas fa-check"></i> Computer Architecture</li>
+            <li><i class="fas fa-check"></i> Operating Systems</li>
+            <li><i class="fas fa-check"></i> Database Systems</li>
+          </ul>
+        </div>
+        <div class="year-card-footer">
+          <a href="thirdYear.html" class="year-link">
+            <span>استكشاف المواد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="year-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="year-card-header">
+          <div class="year-icon">
+            <i class="fas fa-network-wired"></i>
+            <span class="year-number">4</span>
+          </div>
+          <div class="year-badge">📒</div>
+        </div>
+        <div class="year-card-body">
+          <h3 class="year-title">السنة الرابعة</h3>
+          <p class="year-description">الشبكات، الأمن السيبراني</p>
+          <ul class="year-features">
+            <li><i class="fas fa-check"></i> Computer Networks</li>
+            <li><i class="fas fa-check"></i> Network Security</li>
+            <li><i class="fas fa-check"></i> Software Engineering</li>
+          </ul>
+        </div>
+        <div class="year-card-footer">
+          <a href="fourthYear.html" class="year-link">
+            <span>استكشاف المواد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="year-card" data-aos="fade-up" data-aos-delay="500">
+        <div class="year-card-header">
+          <div class="year-icon">
+            <i class="fas fa-robot"></i>
+            <span class="year-number">5</span>
+          </div>
+          <div class="year-badge">📗</div>
+        </div>
+        <div class="year-card-body">
+          <h3 class="year-title">السنة الخامسة</h3>
+          <p class="year-description">الذكاء الاصطناعي، مشاريع التخرج</p>
+          <ul class="year-features">
+            <li><i class="fas fa-check"></i> Artificial Intelligence</li>
+            <li><i class="fas fa-check"></i> Embedded Systems</li>
+            <li><i class="fas fa-check"></i> Graduation Project</li>
+          </ul>
+        </div>
+        <div class="year-card-footer">
+          <a href="fifthYear.html" class="year-link">
+            <span>استكشاف المواد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="section-header" data-aos="fade-up">
+      <h2 class="section-title">
+        <span class="title-icon"><i class="fas fa-star"></i></span>
+        لماذا منصتنا؟
+      </h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3>سريع وسهل</h3>
+        <p>الوصول للمواد بكل سهولة وسرعة دون تعقيدات</p>
+      </div>
+
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-icon">
+          <i class="fas fa-sync"></i>
+        </div>
+        <h3>تحديث مستمر</h3>
+        <p>المحتوى يتم تحديثه باستمرار ليواكب المنهج</p>
+      </div>
+
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>متوافق مع الجوال</h3>
+        <p>تصفح المواد من أي جهاز في أي مكان</p>
+      </div>
+
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>موثوق ومنظم</h3>
+        <p>جميع المواد منظمة ومراجعة بدقة</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3><i class="fas fa-graduation-cap"></i> IUG Computer Engineering</h3>
+        <p>منصة شاملة لطلاب هندسة الحاسوب في الجامعة الإسلامية - غزة</p>
+        <div class="social-links">
+          <a href="https://t.me/IUGComENG2004" target="_blank" title="Telegram">
+            <i class="fab fa-telegram"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>روابط سريعة</h4>
+        <ul class="footer-links">
+          <li><a href="firstYear.html">السنة الأولى</a></li>
+          <li><a href="secndYear.html">السنة الثانية</a></li>
+          <li><a href="thirdYear.html">السنة الثالثة</a></li>
+          <li><a href="fourthYear.html">السنة الرابعة</a></li>
+          <li><a href="fifthYear.html">السنة الخامسة</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>تواصل معنا</h4>
+        <div class="contact-info">
+          <p><i class="fab fa-telegram"></i> Telegram Group</p>
+          <p><i class="fas fa-envelope"></i> iugcomeng2004@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="creators">
+        <span class="creators-label">تم التطوير بواسطة:</span>
+        <span class="creator-name">Eng. Ezz Eldeen Bassam Almjdalawi</span>
+        <span class="separator">&</span>
+        <span class="creator-name">Eng. Musab Musa Alaswed</span>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 IUG Computer Engineering. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="years.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Toggle Menu
+    function toggleMenu() {
+      const menu = document.getElementById('menuList');
+      menu.classList.toggle('show');
+      document.body.classList.toggle('menu-open');
+    }
+
+    // Toggle Dark Mode
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.querySelector('.dark-mode-toggle i');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.className = 'fas fa-sun';
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        icon.className = 'fas fa-moon';
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    }
+
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+      document.querySelector('.dark-mode-toggle i').className = 'fas fa-sun';
+    }
+
+    // Toggle Theme Menu
+    function toggleThemeMenu() {
+      const menu = document.getElementById('themeMenu');
+      menu.classList.toggle('show');
+    }
+
+    // Clear Search
+    function clearSearch() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      document.getElementById('searchResults').style.display = 'none';
+      document.querySelector('.search-clear').style.display = 'none';
+    }
+
+    // Update search clear button visibility
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const clearBtn = document.querySelector('.search-clear');
+      if (this.value.length > 0) {
+        clearBtn.style.display = 'block';
+      } else {
+        clearBtn.style.display = 'none';
+      }
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(event) {
+      const sidebar = document.getElementById('menuList');
+      const menuToggle = document.querySelector('.menu-toggle');
+      
+      if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+        sidebar.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    // Close theme menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const themeMenu = document.getElementById('themeMenu');
+      const themeBtn = document.querySelector('.theme-btn');
+      
+      if (!themeMenu.contains(event.target) && !themeBtn.contains(event.target)) {
+        themeMenu.classList.remove('show');
+      }
+    });
+
+    // Navbar scroll effect
+    let lastScroll = 0;
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      lastScroll = currentScroll;
+    });
+  </script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+</body>
+</html>
